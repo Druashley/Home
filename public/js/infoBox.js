@@ -107,7 +107,7 @@ function confirmEditPost(e) {
     }
 
     fetch(`http://localhost:3000/posts/${editPost}`, options).then(e.originalTarget.parentElement.remove());
-    
+
     setTimeout(function () {
         location.reload();
     }, 1000);
