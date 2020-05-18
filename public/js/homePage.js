@@ -1,0 +1,1 @@
+// home page js will go here and is connected to the index.html page
