@@ -11,9 +11,9 @@ import { editPost } from "http://localhost:3000/js/editPost.js"
 
 
 function setJournal(data) {
-   
-    postContainer.innerHTML = '';
-
+      postContainer.innerHTML = '';
+      // clears journal
+      // then this loop runs through each item in the database to create the post - loops in a backwards rotation so the newest data is at the top.
 
     for (let i = data.length - 1 ; i >= 0; i--) {
         let postTitle = data[i].title;
@@ -22,15 +22,11 @@ function setJournal(data) {
         let postNumber = i + 1;
         let postId = data[i]._id;
         createPost(postTitle, postDescription, postDate, postNumber, postId);
-        // I need to put code here that then puts this data through the div consructor. 
-        // we wont console log here - we will the pass the info through the createPost function
-
     };
 };
 
 
-// going to create the div constructor here
-
+// This function is what creates each journal post. 
 function createPost(postTitle, postDescription, postDate, postNumber, postId) {
     const newPostBody = document.createElement("div");
     const newPostTitle = document.createElement("h1");
@@ -40,13 +36,11 @@ function createPost(postTitle, postDescription, postDate, postNumber, postId) {
     const editButton = document.createElement("img");
     const trashButton = document.createElement("img");
 
-
     newPostBody.setAttribute("id", postId)
     newPostBody.classList.add("journal-entry-container")
     newPostNumber.classList.add("journal-entry-background");
     editButton.classList.add("edit-icon")
     trashButton.classList.add("trashcan-icon")
-
 
     newPostTitle.textContent = postTitle;
     newPostDescription.textContent = postDescription;
@@ -59,9 +53,6 @@ function createPost(postTitle, postDescription, postDate, postNumber, postId) {
     editButton.addEventListener("click", editPost)
     trashButton.addEventListener("click", deletePost);
 
-
-
-
     newPostBody.appendChild(newPostTitle);
     newPostBody.appendChild(newPostDescription);
     newPostBody.appendChild(newPostDate);
@@ -69,12 +60,7 @@ function createPost(postTitle, postDescription, postDate, postNumber, postId) {
     newPostBody.appendChild(editButton);
     newPostBody.appendChild(trashButton);
 
-
-
     postContainer.appendChild(newPostBody);
-
-
-
 };
 
 export { setJournal }

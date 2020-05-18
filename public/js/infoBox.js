@@ -3,16 +3,19 @@
 
 import { journalContainer } from "http://localhost:3000/js/domelements.js"
 
-
-
+// The infobox has a few requiments. Not all need to be met to be used.
+// This is a popup type thing to help the user understand what they are clicking.
+// This is a custom box that appears when the user interacts on the website.
+// It is responsible for the error handling to the user and the user exeperience for patch / delete requests for the journal.
 
 const setInfoBox = function (msg, type, postId, originalTitle, originalDescription) {
+    // this is the main constructor for the journal post.
+    // depending on the type argument different things are added to the base infobox.
+
     const infoBoxContainer = document.createElement("div");
     const infoBoxText = document.createElement("div");
     const infoBoxButtonBack = document.createElement("button");
     const infoBoxButtonOkay = document.createElement("button");
-
-
 
     infoBoxText.textContent = msg;
     infoBoxButtonBack.textContent = "Back"
@@ -58,11 +61,9 @@ const setInfoBox = function (msg, type, postId, originalTitle, originalDescripti
 
     }
 
-
     infoBoxContainer.appendChild(infoBoxText);
     infoBoxContainer.appendChild(infoBoxButtonOkay);
     infoBoxContainer.appendChild(infoBoxButtonBack);
-
 
     journalContainer.appendChild(infoBoxContainer);
 }
@@ -92,7 +93,6 @@ function confirmDeletePost(e) {
 function confirmEditPost(e) {
     const editPost = e.originalTarget.id;
 
-
     const editPostData = {
         "title": e.originalTarget.parentElement.children[0].value,
         "description": e.originalTarget.parentElement.children[1].value
@@ -107,11 +107,10 @@ function confirmEditPost(e) {
     }
 
     fetch(`http://localhost:3000/posts/${editPost}`, options).then(e.originalTarget.parentElement.remove());
-
+    
     setTimeout(function () {
         location.reload();
     }, 1000);
-
 }
 
 

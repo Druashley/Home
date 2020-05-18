@@ -1,3 +1,5 @@
+//All domelements used so far on this website.
+
 const testButton = document.querySelector(".test-button");
 const postButton = document.querySelector(".post-button");
 
