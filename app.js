@@ -47,7 +47,7 @@ app.use('/posts', postsRoute);
 //     });
 // });
 
-app.get('/Home', (req, res) => {
+app.get('/', (req, res) => {
     //res.send('We are home');
     fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {
         res.writeHead(200, { 'Content-Type': 'text/html' });
